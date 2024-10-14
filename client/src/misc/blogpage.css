@@ -1,0 +1,122 @@
+.blogpage {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.published-detail {
+  color: #494949;
+  opacity: 0.75;
+}
+
+.text-purple:hover {
+  color: #8b46ff;
+}
+
+.text-twitter:hover {
+  color: #1da1f2;
+}
+
+.comments-component {
+  position: fixed;
+}
+
+.comments-component2 {
+  transition-duration: 700ms;
+  width: 30%;
+  min-width: 350px;
+  height: 100%;
+  z-index: 50;
+  background-color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.commentWrapper {
+  top: 0;
+  display: block;
+}
+.commentWrapper2 {
+  top: 100%;
+  display: none;
+}
+
+.p-topicincommemt {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  width: 70%;
+  color: #4a4a4a;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.comment-area {
+  padding-left: 1.25rem;
+  resize: none;
+  height: 150px;
+  overflow: auto;
+}
+
+.comment-area::placeholder {
+  color: #494949;
+}
+
+.btn-loadmore {
+  font-size: #494949;
+  border-radius: 0.375rem;
+}
+
+.btn-loadmore:hover {
+  background-color: rgba(128, 128, 128, 0.473);
+}
+
+.text-hide {
+  color: darkgray;
+}
+
+.text-hide:hover{
+  background-color: rgba(128, 128, 128, 0.078);
+}
+
+@media (max-width: 640px) {
+  .detail-user {
+    display: flex;
+    flex-direction: column;
+  }
+  .published-detail {
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+    padding-left: 1.25rem;
+  }
+  .comments-component {
+    width: 100%;
+  }
+  .comments-component2 {
+    right: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .comments-component2 {
+    top: 0;
+  }
+  .commentWrapper {
+    right: 0;
+    visibility: visible;
+  }
+  .commentWrapper2 {
+    visibility: hidden;
+  }
+
+  @media (max-width: 1024px) {
+    .blogpage {
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+  }
+}

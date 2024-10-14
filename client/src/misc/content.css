@@ -1,0 +1,331 @@
+.container-con {
+  padding: 20px;
+  margin-top: 5rem;
+}
+
+.post-container {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+.reply-input {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  height: 110px;
+  padding: 8px;
+  width: 300px;
+}
+.replytoreply {
+  display: flex;
+  margin-left: 3.8rem;
+}
+.input-reply {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  height: 110px;
+  padding: 8px;
+  width: 300px;
+}
+.reply-input p {
+  font-weight: 600 !important;
+  font-size: 16px;
+  color: #333;
+  padding-right: 10px;
+}
+
+.post-con {
+  padding-top: 20px;
+}
+.image-container {
+  max-width: 1450px;
+  max-height: 50%;
+}
+
+.image-container img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  overflow: hidden;
+}
+/* Username , Date */
+.head-user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 16px;
+  justify-content: space-between;
+}
+
+.head-user-detail {
+  display: flex;
+  align-items: center;
+}
+
+.reply-content a {
+  font-weight: 600 !important;
+  font-size: 16px;
+  color: #333;
+  padding-right: 10px;
+}
+
+.datePost {
+  margin-left: 10px; /* ระยะห่างระหว่าง user และ datePost */
+}
+
+.user-info a {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  padding-right: 10px;
+}
+
+.datePost {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Comment */
+.comment-con {
+  margin: 2rem 12rem;
+}
+
+.comment {
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+
+.comment:last-child {
+  border-bottom: none;
+}
+
+.comment .author-info {
+  font-size: 14px;
+  color: #555;
+}
+
+.comment .content {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.comment-area {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.comment-area .input-comment {
+  flex: 1;
+  border: 1px solid #ccc;
+  height: 100px;
+  border-radius: 15px;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.send-icon {
+  position: absolute;
+  border-radius: 4px;
+  padding: 8px;
+  margin-left: 8px;
+  cursor: pointer;
+  right: 11rem;
+  transform: translate(-70px, 0);
+}
+.send-icon1 {
+  position: absolute;
+  border-radius: 4px;
+  padding: 0 8px 8px 8px;
+  margin-left: 8px;
+  cursor: pointer;
+  transform: translate(250px, 0);
+}
+.emoji-icon {
+  position: absolute;
+  border-radius: 4px;
+  padding: 8px;
+  margin-left: 8px;
+  cursor: pointer;
+  left: 15rem;
+  transform: translate(40px, 35px);
+}
+
+.gif-icon {
+  position: absolute;
+  border-radius: 4px;
+  padding: 8px;
+  margin-left: 8px;
+  cursor: pointer;
+  left: 16rem;
+  transform: translate(50px, 35px);
+}
+
+.gif-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px; /* ปรับขนาดไอคอนตามต้องการ */
+}
+
+.gif-picker-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 10;
+  transform: translate(45px, -370px);
+  max-height: 400px; /* กำหนดความสูงสูงสุด */
+  overflow-y: auto; /* ทำให้มีการเลื่อนแนวตั้ง */
+}
+
+.gif-search-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.gif-grid-container {
+  max-height: 300px; /* ความสูงสูงสุดของกริด GIF */
+  overflow-y: auto; /* ทำให้มีการเลื่อนแนวตั้ง */
+}
+
+.gif-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ปรับขนาดของ GIF ในกริด */
+.gif-grid img {
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.gif-grid img:hover {
+  transform: scale(1.05);
+}
+
+.emoji-icon > button > svg,
+.send-icon > button > svg {
+  font-size: 16px;
+}
+
+/* .gif-icon > button > svg {
+  font-size: 20px;
+} */
+
+.send-icon:hover {
+  color: #0056b3;
+}
+
+.btn-action {
+  margin-top: 0;
+  display: flex;
+  align-items: center;
+  float: right;
+}
+
+.icon-like > svg,
+.icon-save > svg,
+.icon-view > svg {
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.icon-like,
+.icon-view {
+  margin-right: 10px;
+}
+.icon-save {
+  color: #333;
+}
+
+.icon-share {
+  font-size: 23px;
+  color: #433e49;
+}
+.post-con > div > div {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+  gap: 10px; /* กำหนดระยะห่างระหว่างรูปภาพ */
+  margin: 2rem 10rem;
+}
+
+.post-con > div > div > img {
+  width: 100%; /*ทำให้รูปภาพปรับขนาดตามความกว้างของกริด */
+  height: 300px;
+
+  object-fit: cover;
+  overflow: hidden;
+}
+
+.category-con > span {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.comment-all {
+  background-color: #f2f3f5;
+  padding: 10px;
+  border-radius: 15px;
+  width: fit-content;
+}
+
+.comment-display {
+  margin: 20px 60px;
+}
+
+.mt-2 .profile-comment {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  margin-right: 10px;
+}
+
+.comment-all a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.mt-2 a:hover {
+  color: #cb6ce6;
+}
+
+.category-วิชาเสรี {
+  background-color: #ff6363;
+}
+
+.category-ข่าวสารประชาสัมพันธ์ {
+  background-color: #ffa954;
+}
+
+.category-น้องใหม่ {
+  background-color: #63b1ff;
+}
+
+.category-ลงทะเบียนเรียน {
+  background-color: #57ff57;
+}
+
+.category-กีฬา {
+  background-color: #fd56fd;
+}
+
+.category-ทั่วไป {
+  background-color: #a3a3a3;
+}
+.category-รีวิวมข {
+  background-color: #a73b24;
+}

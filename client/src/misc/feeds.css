@@ -1,0 +1,123 @@
+.center-text h2 {
+  color: #111;
+  font-size: 28px;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.center-text span {
+  color: #ee1c47;
+}
+.blog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, auto));
+  gap: 2rem;
+}
+.row {
+  position: relative;
+  transition: all 0.4s;
+}
+.row img {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  object-fit: cover;
+  transition: all 0.4s;
+  loading: lazy;
+}
+.row img:hover {
+  transform: scale(0.9);
+}
+.row > .select-detail svg {
+  position: absolute;
+  right: 25px;
+  top: 8px;
+  z-index: 1000;
+  cursor: pointer;
+}
+.row > .select-detail > svg:hover {
+  color: rgb(123, 123, 123);
+}
+/* .blog-text h5 {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  background: #27b737;
+  padding: 3px 10px;
+  border-radius: 2px;
+} */
+.detail-blog h4 {
+  color: #111;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.detail-blog p {
+  color: #151515;
+  font-size: 14px;
+  height: 60px;
+  font-size: 0.9rem; /* ปรับขนาดตามที่ต้องการ */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.heart-icon svg {
+  right: 15px;
+  font-size: 20px;
+}
+.heart-icon {
+  display: flex;
+  align-items: center;
+}
+.heart-icon svg:hover {
+  color: #ee1c47;
+}
+
+.category {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 15px;
+  margin: 10px 2px;
+  color: white;
+  font-size: 0.9em;
+}
+
+.user-name img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* styles.css */
+.category-วิชาเสรี {
+  background-color: #ff6363;
+}
+
+.category-ข่าวสารประชาสัมพันธ์ {
+  background-color: #ffa954 !important;
+}
+
+.category-น้องใหม่ {
+  background-color: #63b1ff;
+}
+
+.category-ลงทะเบียนเรียน {
+  background-color: #57ff57;
+}
+
+.category-กีฬา {
+  background-color: #fd56fd;
+}
+
+.category-ทั่วไป {
+  background-color: #a3a3a3;
+}
+.category-รีวิวมข {
+  background-color: #a73b24;
+}

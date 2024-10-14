@@ -1,0 +1,70 @@
+.coverpic > img {
+  height: 60vh;
+  object-fit: cover;
+  overflow: hidden;
+}
+.input-group-append {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.input-group-append1 {
+  display: flex;
+  justify-content: end;
+}
+.input-group-text1 {
+  position: absolute;
+  display: flex;
+  top: 55%;
+  background: white;
+  padding: 0.3rem;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 300px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+.input-group-text2 {
+  position: absolute;
+  display: flex;
+  top: 58%;
+  background: white;
+  padding: 0.3rem;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 300px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+  cursor: pointer;
+  color: black;
+}
+.ex-Pro1 {
+  display: flex;
+  justify-content: center;
+  width: -webkit-fill-available;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.profilepic {
+  position: absolute;
+  transform: translate(8%, -50%);
+}
+.hover\:text-black:hover {
+  color: black; /* เปลี่ยนสีเป็นสีดำเมื่อ hover */
+}
+
+.icon-social-link > * {
+  margin-right: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-user {
+    width: 90%;
+    margin-top: 1.5rem;
+  }
+}

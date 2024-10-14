@@ -1,0 +1,37 @@
+.wp {
+  padding: 2% 20% 0 20%;
+}
+/* wp.css */
+.selected {
+  background-color: #433e49;
+  padding: 5px;
+  border-radius: 100%; /* กำหนดสีพื้นหลังเมื่อเลือกรูป */
+}
+.option-type {
+  display: flex;
+  justify-content: center; /* จัดวางตรงกลางแนวนอน */
+  align-items: center; /* จัดวางตรงกลางแนวตั้ง */
+}
+
+.option-type img {
+  width: 70px; /* กำหนดขนาดรูปภาพตัวเลือกเป็น 60px */
+  margin-right: 20px;
+  justify-content: center;
+  padding: 5px;
+}
+
+.alltype {
+  margin-top: 15px;
+}
+.post {
+  background-color: #433e49;
+  color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 10px;
+}
+.selectfile {
+  border: 1px rgb(209, 208, 208) solid;
+  padding: 15px;
+  border-radius: 5px;
+}

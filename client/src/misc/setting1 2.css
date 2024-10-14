@@ -1,0 +1,219 @@
+.unstyled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  a {
+    text-decoration: none;
+  }
+}
+.list-inline {
+  overflow: hidden;
+  li {
+    float: left;
+  }
+}
+.nav-wrap {
+  margin-top: 11%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 28%;
+  background: #433e49;
+}
+.contain-setting {
+  margin-top: 11%;
+  position: fixed;
+  left: 28%;
+  top: 0;
+  bottom: 0;
+  width: 28%;
+  background: #433e49;
+}
+li {
+  color: #fff;
+  border-bottom: 0.5px solid #fff;
+  padding: 20px 30px;
+}
+
+li a {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 900;
+}
+div nav #sidebarSet:hover {
+  background-color: rgb(211, 197, 197);
+}
+/* div nav ul li a: {
+    color: #433e49;
+  } */
+.main-nav {
+  ul {
+    border-top: solid 1px gray;
+  }
+
+  li {
+    border-bottom: solid 1px gray;
+  }
+
+  a {
+    padding: 1.1em 0;
+    color: white;
+    font: 400 1.125em;
+    text-align: center;
+    transform: lowercase;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}
+.contain-setting {
+  /* margin-top: 15%; */
+  position: fixed;
+  left: 28%;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  width: 72%;
+  background-color: white;
+}
+
+.manageAcc {
+  padding: 40px;
+}
+.btnChangpass,
+.btnDeleteAcc {
+  margin-top: 20px;
+  padding: 8px;
+  background-color: #433e49;
+  color: #fff;
+  border-radius: 12px;
+  border: #433e49;
+}
+#set1-input1,
+#set1-input2 {
+  width: 40%;
+}
+
+.change-password-modal input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.change-password-modal button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+}
+
+.newpassmodal {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.confirmnewpassmodal {
+  background-color: #dc3545;
+  color: #fff;
+}
+.button-container {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+/* Modal styles */
+.change-password-modal,
+.delete-confirmation-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 300px;
+}
+
+/* Modal header styles */
+.change-password-modal h4,
+.delete-confirmation-modal h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Modal body styles */
+.change-password-modal input[type="password"],
+.delete-confirmation-modal input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Modal button container styles */
+.button-container {
+  display: flex;
+  align-items: center; /* จัดให้อยู่กึ่งกลางตามแนวดิ่ง */
+}
+
+.button-container button {
+  border: none;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* Modal button styles */
+.change-password-modal button,
+.delete-confirmation-modal button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.change-password-modal .newpassmodal,
+.delete-confirmation-modal .confirm-delete {
+  background-color: #56b47a;
+  color: #fff;
+}
+
+.change-password-modal .confirmnewpassmodal,
+.delete-confirmation-modal .cancel-delete {
+  background-color: #ccc;
+  color: #000;
+}
+
+/* Fade-in animation for modals */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.change-password-modal,
+.delete-confirmation-modal {
+  animation: fadeIn 0.2s ease-in-out;
+}
