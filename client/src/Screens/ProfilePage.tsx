@@ -65,6 +65,7 @@ const ProfilePage = () => {
       })
       .then(({ data: user }) => {
         if (user !== null) {
+          console.log("User data: ", user); 
           setProfile(user);
         }
         if (profileId) {

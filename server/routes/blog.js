@@ -101,7 +101,7 @@ router.post("/", verifyJWT, (req, res) => {
         User.findOneAndUpdate(
           { _id: authorId },
           {
-            $inc: { "account_info.total_posts": incrementVal },
+            $inc: { "total_posts": incrementVal },
             $push: { blogs: blog._id },
           }
         )
