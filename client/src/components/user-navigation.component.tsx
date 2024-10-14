@@ -34,6 +34,9 @@ const UserNavigationPanel = () => {
         <Link to={`/settings/edit-profile`} className="link pl-8">
           ตั้งค่า
         </Link>
+        <Link to={`/settings/edit-profile`} className="link pl-8">
+          ช่วยเหลือ
+        </Link>
 
         <span className="position-absolute border-top border-grey w-100"></span>
 

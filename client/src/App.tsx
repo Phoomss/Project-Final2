@@ -42,6 +42,8 @@ import SearchPage from "./Screens/search.page";
 import PageNotFound from "./Screens/404";
 import ProfilePage from "./Screens/ProfilePage";
 import BlogPage from "./Screens/blog.page";
+import DashboardUser from "./Screens/DashboardUser";
+
 
 interface UserContextType {
   userAuth: {
@@ -106,12 +108,13 @@ function App() {
             <Route path="/posts" element={<Post />} />
             <Route path="/writepost" element={<Writepost />} />
             <Route path="/editpost/:id" element={<EditPost />} />
-            <Route path="/setting1" element={<Setting />} />
-            <Route path="/setting2" element={<Setting2 />} />
+            <Route path="/settings/edit-profile" element={<Setting />} />
+            <Route path="//login-security" element={<Setting2 />} />
             <Route path="/setting3" element={<Setting3 />} />
             <Route path="/sidebar" element={<Sidebar />} />
             <Route path="/st" element={<Settingtest />} />
             <Route path="/footer" element={<Footer />} />
+            <Route path="/dashboard/blogs" element={<DashboardUser />} />
             <Route path="/helpcentre" element={<HelpCentre />} />
             {/* <Route path="/content/:id" element={<Content />} /> */}
             <Route path="/category" element={<Category />} />

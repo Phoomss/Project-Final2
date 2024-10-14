@@ -30,6 +30,8 @@ import ManageQ from "./manageQ";
 import axios from "axios";
 import ReportDetailsModal from "./approve-modal";
 import { Button } from "react-bootstrap";
+import { Line } from "react-chartjs-2"; // ใช้แสดงกราฟ Line
+import "chart.js/auto"; // สำหรับการใช้งาน Chart.js
 
 interface Report {
   _id: string;
@@ -275,6 +277,45 @@ const AdminHome: React.FC = () => {
     );
   };
 
+  // สถานะเพื่อจัดการการ hover สำหรับ user-all และ view-all
+  const [isUserHovered, setIsUserHovered] = useState(false);
+  const [isViewHovered, setIsViewHovered] = useState(false);
+
+  // ข้อมูลตัวอย่างสำหรับกราฟ
+  const userData = {
+    labels: ["june", "july", "august", "sept", "oct", "nov"],
+    datasets: [
+      {
+        label: "จำนวนผู้ใช้",
+        data: [0, 0, 0, 0, 3, 0], // ข้อมูลกราฟ
+        borderColor: "rgba(75, 192, 192, 1)",
+        backgroundColor: "rgba(75, 192, 192, 0.2)",
+        fill: true,
+      },
+    ],
+  };
+  // ข้อมูลตัวอย่างสำหรับกราฟของการเยี่ยมชม
+  const viewData = {
+    labels: ["june", "july", "august", "sept", "oct", "nov"],
+    datasets: [
+      {
+        label: "จำนวนการเยี่ยมชม",
+        data: [0, 0, 0, 0, 19, 0], // ข้อมูลกราฟการเยี่ยมชม
+        borderColor: "rgba(153, 102, 255, 1)",
+        backgroundColor: "rgba(153, 102, 255, 0.2)",
+        fill: true,
+      },
+    ],
+  };
+
+  const options = {
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
+  };
+
   return (
     <div className="adminHome">
       <div className="contain">
@@ -360,7 +401,12 @@ const AdminHome: React.FC = () => {
             </div>
 
             <div className="insights">
-              <div className="user-all">
+              <div
+                className="user-all"
+                onMouseEnter={() => setIsUserHovered(true)} // เมื่อเมาส์เข้า
+                onMouseLeave={() => setIsUserHovered(false)} // เมื่อเมาส์ออก
+                style={{ position: "relative" }} // เพื่อให้กราฟอยู่บน div
+              >
                 <PiUsersThreeFill className="svg1" />
                 <div className="middle">
                   <div className="left">
@@ -369,9 +415,35 @@ const AdminHome: React.FC = () => {
                   </div>
                 </div>
                 <small className="text-muted1">Last 24 Hour</small>
+
+                {/* แสดงกราฟเมื่อ hover บน user-all */}
+                {isUserHovered && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "100%",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      backgroundColor: "white",
+                      border: "1px solid #ccc",
+                      padding: "10px",
+                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                      zIndex: 10,
+                      width: "300px",
+                    }}
+                  >
+                    <Line data={userData} options={options} />
+                  </div>
+                )}
               </div>
 
-              <div className="view-all">
+              {/* ส่วนของ view-all */}
+              <div
+                className="view-all"
+                onMouseEnter={() => setIsViewHovered(true)} // เมื่อเมาส์เข้า
+                onMouseLeave={() => setIsViewHovered(false)} // เมื่อเมาส์ออก
+                style={{ position: "relative" }} // เพื่อให้กราฟอยู่บน div
+              >
                 <LuView className="svg2" />
                 <div className="middle">
                   <div className="left">
@@ -380,6 +452,26 @@ const AdminHome: React.FC = () => {
                   </div>
                 </div>
                 <small className="text-muted1">Last 24 Hour</small>
+
+                {/* แสดงกราฟเมื่อ hover บน view-all */}
+                {isViewHovered && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "100%",
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      backgroundColor: "white",
+                      border: "1px solid #ccc",
+                      padding: "10px",
+                      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                      zIndex: 10,
+                      width: "300px",
+                    }}
+                  >
+                    <Line data={viewData} options={options} />
+                  </div>
+                )}
               </div>
 
               <div className="blogpost-all">

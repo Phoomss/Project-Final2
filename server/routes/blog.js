@@ -101,7 +101,7 @@ router.post("/", verifyJWT, (req, res) => {
         User.findOneAndUpdate(
           { _id: authorId },
           {
-            $inc: { "total_posts": incrementVal },
+            $inc: { total_posts: incrementVal },
             $push: { blogs: blog._id },
           }
         )
@@ -235,7 +235,7 @@ router.post("/add-comment", verifyJWT, (req, res) => {
         },
       }
     ).then((blog) => {
-      console.log("แสดงความคิดเห็นแล้ว");
+      console.log("แสดงความคิดเห็นแล้ว!");
     });
 
     let notifaicationObj = {
@@ -315,9 +315,9 @@ router.post("/get-replies", (req, res) => {
     .then((doc) => {
       return res.status(200).json({ replies: doc.children });
     })
-    .catch(err => {
-      return res.status(500).json({error:err.message})
-    })
+    .catch((err) => {
+      return res.status(500).json({ error: err.message });
+    });
 });
 
 module.exports = router;
