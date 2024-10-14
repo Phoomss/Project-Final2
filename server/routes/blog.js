@@ -259,7 +259,7 @@ router.post("/add-comment", verifyJWT, (req, res) => {
 
     new Notifications(notifaicationObj)
       .save()
-      .then((notifaications) => console.log("แจ้งเตือนใหม่!"));
+      .then((notifaications) => console.log("แจ้งเตือนใหม่!!"));
 
     return res.status(200).json({
       comment,
