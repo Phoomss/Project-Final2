@@ -5,61 +5,32 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 
 router.post("/:id/:token", async (req, res) => {
-  const { id, token } = req.params;
-  const { password } = req.body;
+  const { newPassword } = req.body;
+  const { userId, token } = req.params;
 
-  // ตรวจสอบค่าที่รับมาจาก URL และ body
-  console.log("ID from URL:", id);
-  console.log("Token from URL:", token);
-  console.log("Password from body:", password);
+  if (!newPassword) {
+    return res.status(400).send({ message: "New Password is required" });
+  }
 
-  try {
-    console.log("Received token:", token);
-
-    // ตรวจสอบ token
-    let decoded;
-    try {
-      decoded = jwt.verify(token, process.env.JWT_SECRET);
-    } catch (err) {
-      console.error("Invalid token:", err.message);
-      return res
-        .status(400)
-        .json({ Status: "Error", Message: "Invalid token" });
+  // ตรวจสอบโทเค็น
+  jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
+    if (err) {
+      return res.status(403).send({ message: "Invalid or expired token" });
     }
-    console.log("Decoded token:", decoded);
 
     // ค้นหาผู้ใช้ตาม ID
-    const user = await User.findById(id);
+    const user = await User.findById(userId);
     if (!user) {
-      console.log("User not found for ID:", id);
-      return res
-        .status(404)
-        .json({ Status: "Error", Message: "User not found" });
+      return res.status(404).send({ message: "User not found" });
     }
 
-    // แฮชรหัสผ่านและอัปเดตผู้ใช้
-    const hashedPassword = await bcrypt.hash(password, 10);
-    user.password = hashedPassword;
+    // แฮชรหัสผ่านใหม่และบันทึก
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword; // ปรับปรุงรหัสผ่านในฐานข้อมูล
     await user.save();
 
-    res
-      .status(200)
-      .json({ Status: "Success", Message: "Password updated successfully" });
-  } catch (error) {
-    console.error("Error:", error.message);
-    res
-      .status(400)
-      .json({ Status: "Error", Message: "Invalid token or user ID" });
-  }
+    return res.status(200).send({ message: "Password has been reset successfully" });
+  });
 });
 
 module.exports = router;
-
-// เพิ่มโค้ดทดสอบ JWT ที่นี่
-const testToken = jwt.sign(
-  { userId: "66a0d89f4ee74c78f492432e" }, // ใช้ userId จริง
-  "Jungkook1997", // ใช้ค่า JWT_SECRET จริง
-  { expiresIn: "1d" }
-);
-
-console.log("Test Token:", testToken);

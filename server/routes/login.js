@@ -1,5 +1,6 @@
 const express = require("express");
 const User = require("../models/user");
+const Admin = require("../models/admin")
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -107,13 +108,40 @@ router.post("/", (req, res) => {
   console.log("Email:", email);
   console.log("Password:", password);
 
+  // ลองหาว่าเป็นผู้ใช้ทั่วไปก่อน
   User.findOne({ email: email })
-
     .then((user) => {
       if (!user) {
-        return res.status(403).json({ error: "ไม่พบผู้ใช้" });
-      }
-      if (!user.google_auth) {
+        // ถ้าไม่พบผู้ใช้ ลองค้นหาในแอดมิน
+        Admin.findOne({ email: email })
+          .then((admin) => {
+            if (!admin) {
+              return res.status(403).json({ error: "ไม่พบผู้ใช้หรือแอดมิน" });
+            }
+            // ตรวจสอบรหัสผ่านของแอดมิน
+            bcrypt.compare(password, admin.password, (err, result) => {
+              if (err) {
+                return res
+                  .status(403)
+                  .json({ error: "เกิดข้อผิดพลาดขณะเข้าสู่ระบบ โปรดลองอีกครั้ง" });
+              }
+
+              if (!result) {
+                return res.status(403).json({ error: "รหัสผ่านไม่ถูกต้อง" });
+              } else {
+                // ล็อกอินสำเร็จ (แอดมิน)
+                const formData = formDatatoSend(admin);
+                formData.role = "admin";
+                return res.status(200).json(formData);
+              }
+            });
+          })
+          .catch((err) => {
+            console.log(err.message);
+            return res.status(500).json({ error: err.message });
+          });
+      } else {
+        // ตรวจสอบรหัสผ่านของผู้ใช้
         bcrypt.compare(password, user.password, (err, result) => {
           if (err) {
             return res
@@ -124,16 +152,12 @@ router.post("/", (req, res) => {
           if (!result) {
             return res.status(403).json({ error: "รหัสผ่านไม่ถูกต้อง" });
           } else {
-            return res.status(200).json(formDatatoSend(user));
+            // ล็อกอินสำเร็จ (ผู้ใช้)
+            const formData = formDatatoSend(user);
+            formData.role = "user";
+            return res.status(200).json(formData);
           }
         });
-      } else {
-        return res
-          .status(403)
-          .json({
-            error:
-              "บัญชีถูกสร้างด้วยบัญชี Google แล้ว โปรดเข้าสู่ระบบด้วย Google",
-          });
       }
     })
     .catch((err) => {

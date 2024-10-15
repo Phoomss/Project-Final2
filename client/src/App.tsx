@@ -96,7 +96,7 @@ function App() {
               path="/signup"
               element={<UserAuthForm type="สมัครสมาชิก" />}
             />
-            <Route index element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/search/:query" element={<SearchPage />} />
             <Route path="*" element={<PageNotFound />} />
             <Route path="/user/:id" element={<ProfilePage />} />
@@ -125,7 +125,7 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/admin/register" element={<RegisterAdmin />} />
           <Route path="/admin/login" element={<LoginAdmin />} />
-          <Route path="/admin/:id" element={<AdminHome />} />
+          <Route path="/admin" element={<AdminHome />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route
             path="/reset_password/:id/:token"

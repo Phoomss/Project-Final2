@@ -26,7 +26,7 @@ const ResetPassword: React.FC = () => {
       if (response.ok) {
         const data = await response.json();
         if (data.Status === "Success") {
-          navigate("/login");
+          navigate("/signin");
         } else {
           console.error(data.Message);
         }

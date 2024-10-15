@@ -1,54 +1,73 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { TextField, Button, Container, Typography } from "@mui/material";
 
-function ForgotPassword() {
-    const [email, setEmail] = useState("");
-    const navigate = useNavigate();
+const ForgotPassword = () => {
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        fetch('http://localhost:3001/forgot-password', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email }),
-            credentials: 'include' // ใช้สำหรับแนบคุกกี้และข้อมูลรับรองไปกับคำขอ
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.Status === "Success") {
-                navigate('/login');
-            }
-        })
-        .catch(err => console.log(err));
-    }
+  const navigate = useNavigate();
 
-    return(
-        <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-            <div className="bg-white p-3 rounded w-25">
-                <h4>Forgot Password</h4>
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <label htmlFor="email">
-                            <strong>Email</strong>
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="Enter Email"
-                            autoComplete="off"
-                            name="email"
-                            className="form-control rounded-0"
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-success w-100 rounded-0">
-                        Send
-                    </button>
-                </form>
-            </div>
-        </div>
-    );
-}
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    fetch("http://localhost:3001/forgot-password", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, newPassword }), // ส่ง newPassword ด้วย
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) { // ตรวจสอบสถานะการอัปเดตพาสเวิร์ด
+          navigate("/signin"); // เปลี่ยนเส้นทางไปยังหน้าสำหรับเข้าสู่ระบบ
+        } else {
+          // คุณสามารถจัดการกับข้อผิดพลาดที่เกิดขึ้นที่นี่ได้
+          console.log(data.message);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  return (
+    <Container maxWidth="sm" className="d-flex justify-content-center align-items-center vh-100">
+      <div className="bg-white p-3 rounded">
+        <Typography variant="h4" align="center">Forgot Password</Typography>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            fullWidth
+            margin="normal"
+            label="Email"
+            variant="outlined"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <TextField
+            fullWidth
+            margin="normal"
+            label="New Password"
+            variant="outlined"
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            required
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            fullWidth
+            className="mt-2"
+          >
+            Send
+          </Button>
+        </form>
+      </div>
+    </Container>
+  );
+};
 
 export default ForgotPassword;

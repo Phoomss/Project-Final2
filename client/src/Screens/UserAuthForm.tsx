@@ -1,7 +1,7 @@
 import "../misc/signup.css";
 import InputBox from "../components/input.component";
 import googleIcon from "../pic/google.png";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom"; // เพิ่ม useNavigate
 import AnimationWrapper from "./page-animation";
 import { useContext, useEffect, useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
@@ -16,6 +16,7 @@ interface LoginPageProps {
 const UserAuthForm: React.FC<LoginPageProps> = ({ type }) => {
   const authForm = useRef<HTMLFormElement>(null);
   const API_URL = "http://localhost:3001";
+  const navigate = useNavigate(); // ใช้ useNavigate
 
   const {
     userAuth: { access_token },
@@ -45,6 +46,13 @@ const UserAuthForm: React.FC<LoginPageProps> = ({ type }) => {
       .then((data) => {
         storeInSession("user", JSON.stringify(data));
         setUserAuth(data);
+
+        // นำทางไปยังหน้าที่เหมาะสมตามบทบาท
+        if (data.role === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
       })
       .catch((error) => {
         toast.error(error.message);
@@ -166,6 +174,10 @@ const UserAuthForm: React.FC<LoginPageProps> = ({ type }) => {
             icon="VscKey"
           />
 
+            <Link to="/forgot-password" className="custom-link">
+             ลืมรหัสผ่าน
+            </Link>
+        
           <button
             className="btn-dark center"
             style={{ display: "block", margin: "0 auto", marginTop: "3.5rem" }}
